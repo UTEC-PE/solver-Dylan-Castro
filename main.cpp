@@ -1,28 +1,23 @@
-#include <iostream>
-#include <string.h>
-#include <stack>
-#include <ctype.h>
-using namespace std;
-
-void Topostfix(char* operation){
+#include "stack.h"
+/*void Topostfix(char* operation){
     stack<int> output;
     stack<char> operators;
     for(int x=0;x<strlen(operation);x++){
     }
-    cout << output[0];
-    cout << output[1];
-}
-void menu() {
-      system("cls");
-      cout<<"==========================================================="<<endl;
-      cout<<"\t\tPractica Operaciones"<<endl;
-      cout<<"==========================================================="<<endl;
 
-      //char* str="7/4*((a+b)*a)+3";
-      //char* str="7/4*((a+-+--b)*a)+3";
-      //char* str="2+(3)";
-      char str[]="7/4*((a+b)^4*a)+3";
-      Topostfix(str);
+}*/
+void menu() {
+    system("cls");
+    cout<<"==========================================================="<<endl;
+    cout<<"\t\tPractica Operaciones"<<endl;
+    cout<<"==========================================================="<<endl;
+    //char* str="7/4*((a+b)*a)+3";
+    //char* str="7/4*((a+-+--b)*a)+3";
+    //char* str="2+(3)";
+    char operation[]="7/4*((a--b)^4*a)+3";
+    Stack<char>* homework= new Stack<char>();
+    homework->topostfix(operation);
+    //Topostfix(str);
 }
 
 int main(int argc, char const *argv[]) {
