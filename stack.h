@@ -4,11 +4,13 @@
 #include <string.h>
 #include <ctype.h>
 #include "node.h"
+#include <map>
 using namespace std;
 template <typename T>
 class Stack{
     private:
         Node<char>* top;
+        map<char,int> var;
     public:
         Stack();
         void topostfix(char* operation);
@@ -23,14 +25,7 @@ template<class T> Stack<T>::~Stack(){
     delete top;
 }
 template<class T> double Stack<T>::calculator(){
-    /*stack<char> calc;
-    do{
-        if(isdigit(top->postfix.top()){
-            calc.push(top->postfix.top());
-            top->postfix.pop();
-        }
-    }
-    while(!top->postfix.empty());*/
+    ////
 }
 
 
@@ -60,14 +55,16 @@ template<class T> void Stack<T> ::topostfix(char* operation){
         }
         else{
             if(operation[x]=='*'){
+                if(!top->operator_stack.empty()){
                 if(top->operator_stack.top()=='/' || top->operator_stack.top()=='^'){
                     stack_to_output(false);
-                }
+                }}
             }
             else if(operation[x]=='-'){
+                if(!top->operator_stack.empty()){
                 if(top->operator_stack.top()=='*' || top->operator_stack.top()=='^' || top->operator_stack.top()=='-' || top->operator_stack.top()=='/'){
                     stack_to_output(false);
-                }
+                }}
                 if(operation[x+1]=='-'){
                     operation[x]='|';
                     operation[x+1]='+';
@@ -78,9 +75,10 @@ template<class T> void Stack<T> ::topostfix(char* operation){
                 }
             }
             else if(operation[x]=='+'){
+                if(!top->operator_stack.empty()){
                 if(top->operator_stack.top()=='-' || top->operator_stack.top()=='^' || top->operator_stack.top()=='*' || top->operator_stack.top()=='/'){
                     stack_to_output(false);
-                }
+                }}
                 if(operation[x+1]=='-'){
                     operation[x]='|';
                     operation[x+1]=='-';
