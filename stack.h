@@ -13,6 +13,7 @@ class Stack{
         Stack();
         void topostfix(char* operation);
         void stack_to_output(bool bracket);
+        double calculator();
         ~Stack();
 };
 template<class T> Stack<T>::Stack(){
@@ -21,6 +22,18 @@ template<class T> Stack<T>::Stack(){
 template<class T> Stack<T>::~Stack(){
     delete top;
 }
+template<class T> double Stack<T>::calculator(){
+    /*stack<char> calc;
+    do{
+        if(isdigit(top->postfix.top()){
+            calc.push(top->postfix.top());
+            top->postfix.pop();
+        }
+    }
+    while(!top->postfix.empty());*/
+}
+
+
 template<class T> void Stack<T>::stack_to_output(bool bracket){
     do{
         if(top->operator_stack.top()=='('){
@@ -55,30 +68,44 @@ template<class T> void Stack<T> ::topostfix(char* operation){
                 if(top->operator_stack.top()=='*' || top->operator_stack.top()=='^' || top->operator_stack.top()=='-' || top->operator_stack.top()=='/'){
                     stack_to_output(false);
                 }
+                if(operation[x+1]=='-'){
+                    operation[x]='|';
+                    operation[x+1]='+';
+                }
+                else if(operation[x+1]=='+'){
+                    operation[x]='|';
+                    operation[x+1]='-';
+                }
             }
             else if(operation[x]=='+'){
                 if(top->operator_stack.top()=='-' || top->operator_stack.top()=='^' || top->operator_stack.top()=='*' || top->operator_stack.top()=='/'){
                     stack_to_output(false);
                 }
+                if(operation[x+1]=='-'){
+                    operation[x]='|';
+                    operation[x+1]=='-';
+                }
+                else if(operation[x+1]=='+'){
+                    operation[x]='|';
+                }
             }
-            top->operator_stack.push(operation[x]);
+            if(operation[x]!='|'){
+                top->operator_stack.push(operation[x]);
+            }
         }
         ////////////////////////
     }
     stack_to_output(false);
-    stack<char> postfix;
     do{
-        postfix.push(top->output_queue.top());
+        top->postfix.push(top->output_queue.top());
         top->output_queue.pop();
     }
     while(!top->output_queue.empty());
-    /*double dig_1=postfix.top();
-    postfix.pop();
-    double dig_2=postfix.top();
-    postfix.pop();
+    /////////////////////////
     do{
-        postfix.pop();
+        cout << top->postfix.top();
+        top->postfix.pop();
     }
-    while(!postfix.empty());*/
+    while(!top->postfix.empty());
 }
 #endif

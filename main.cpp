@@ -14,7 +14,7 @@ void menu() {
     //char* str="7/4*((a+b)*a)+3";
     //char* str="7/4*((a+-+--b)*a)+3";
     //char* str="2+(3)";
-    char operation[]="7/4*((a--b)^4*a)+3";
+    char operation[]="10/4*((a--+-b)^4*a)+3";
     Stack<char>* homework= new Stack<char>();
     homework->topostfix(operation);
     //Topostfix(str);

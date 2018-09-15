@@ -6,6 +6,7 @@ template <typename T>
 struct Node {
     stack<char> operator_stack;
     stack<char> output_queue;
+    stack<char> postfix;
 };
 
 #endif
