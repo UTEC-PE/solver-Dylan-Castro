@@ -27,6 +27,7 @@ template<class T> Stack<T>::~Stack(){
     delete top;
 }
 template<class T> double Stack<T>::calculator(){
+    //Opera en notacion de postfix e imprime el resultado
     do{
         try
           {
@@ -64,6 +65,7 @@ template<class T> double Stack<T>::calculator(){
     delete top;
 }
 template<class T> string Stack<T>::tostr(auto data){
+    //Convierte los datos a string
     stringstream ss;
     ss << data;
     string s = ss.str();
@@ -71,6 +73,7 @@ template<class T> string Stack<T>::tostr(auto data){
 }
 
 template<class T> void Stack<T>::stack_to_output(bool bracket){
+    //Envia todos los datos del stack_operator al stack_output
     do{
         if(top->operator_stack.top()=="("){
            if(bracket){
@@ -84,6 +87,7 @@ template<class T> void Stack<T>::stack_to_output(bool bracket){
     while(!top->operator_stack.empty());
 }
 template<class T> void Stack<T> ::topostfix(string operation){
+   //Convierte de notacion infix a postfix
    bool next_num=false;
    for(int x=0;x<operation.length();x++){
         if(isdigit(operation[x])){

@@ -10,7 +10,6 @@ void menu() {
     string operation="17/4*((a+b)^4*a)+3";
     Stack<string>* homework= new Stack<string>();
     homework->topostfix(operation);
-    //Topostfix(str);
 }
 
 int main(int argc, char const *argv[]) {
