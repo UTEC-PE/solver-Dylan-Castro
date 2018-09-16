@@ -4,12 +4,13 @@ void menu() {
     cout<<"==========================================================="<<endl;
     cout<<"\t\tPractica Operaciones"<<endl;
     cout<<"==========================================================="<<endl;
-    //char operation[]="7/4*((a+b)*a)+3";
-    //char operation[]="7/4*((a+-+--b)*a)+3";
-    //char operation[]="2+(3)";
-    char operation[]="17/4*((a+b)^4*a)+3";
-    Stack<char>* homework= new Stack<char>();
+    //string operation="7/4*((a+b)*a)+3";
+    //string operation="7/4*((a+-+--b)*a)+3";
+    //string operation="2+(3)";
+    string operation="17/4*((a+b)^4*a)+3";
+    Stack<string>* homework= new Stack<string>();
     homework->topostfix(operation);
+    //Topostfix(str);
 }
 
 int main(int argc, char const *argv[]) {

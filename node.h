@@ -1,12 +1,14 @@
 #ifndef NODE_H
 #define NODE_H
 #include <stack>
+#include <string>
 using namespace std;
 template <typename T>
 struct Node {
-    stack<char> operator_stack;
-    stack<char> output_queue;
-    stack<char> postfix;
+    stack<string> operator_stack;
+    stack<string> output_queue;
+    stack<string> postfix;
+    stack<double> calc_rpn;
 };
 
 #endif
