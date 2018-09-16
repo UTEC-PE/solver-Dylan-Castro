@@ -105,6 +105,10 @@ template<class T> void Stack<T> ::topostfix(string operation){
                 next_num=false;
             }
         }
+        else if(operation[x]=='.'){
+            top->output_queue.top()=tostr(top->output_queue.top())+tostr(operation[x]);
+            next_num=true;
+        }
         else if((int(operation[x])>=97 && int(operation[x])<=122)){
             if(var.find(operation[x])->first==operation[x]){
                 top->output_queue.push(var.find(operation[x])->second);
