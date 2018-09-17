@@ -38,15 +38,30 @@ template<class T> double Stack<T>::calculator(){
           }
           catch (...)
           {
-            double num2= top->calc_rpn.top();
-            top->calc_rpn.pop();
-            double num1= top->calc_rpn.top();
-            top->calc_rpn.pop();
+            double alone_num=0,num2=0,num1=0;
+            if(top->calc_rpn.size()==1){
+                alone_num = top->calc_rpn.top();
+                top->calc_rpn.pop();
+            }
+            else{
+                num2= top->calc_rpn.top();
+                top->calc_rpn.pop();
+                num1= top->calc_rpn.top();
+                top->calc_rpn.pop();
+            }
             if(top->postfix.top()=="+"){
+                if(alone_num!=0){
+                    top->calc_rpn.push(alone_num);
+                }else{
                 top->calc_rpn.push(num1+num2);
+                }
             }
             else if(top->postfix.top()=="-"){
+                if(alone_num!=0){
+                    top->calc_rpn.push(alone_num*-1);
+                }else{
                 top->calc_rpn.push(num1-num2);
+                }
             }
             else if(top->postfix.top()=="*"){
                 top->calc_rpn.push(num1*num2);
