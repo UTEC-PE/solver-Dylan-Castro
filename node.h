@@ -7,7 +7,6 @@ template <typename T>
 struct Node {
     stack<string> operator_stack;
     stack<string> output_queue;
-    stack<string> postfix;
     stack<double> calc_rpn;
 };
 

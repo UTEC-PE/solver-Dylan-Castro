@@ -31,10 +31,10 @@ template<class T> double Stack<T>::calculator(){
     do{
         try
           {
-            if(!isdigit(stoi(top->postfix.top()))){
-                top->calc_rpn.push(stod(top->postfix.top()));
+            if(!isdigit(stoi(top->operator_stack.top()))){
+                top->calc_rpn.push(stod(top->operator_stack.top()));
             }
-            top->postfix.pop();
+            top->operator_stack.pop();
           }
           catch (...)
           {
@@ -49,33 +49,33 @@ template<class T> double Stack<T>::calculator(){
                 num1= top->calc_rpn.top();
                 top->calc_rpn.pop();
             }
-            if(top->postfix.top()=="+"){
+            if(top->operator_stack.top()=="+"){
                 if(alone_num!=0){
                     top->calc_rpn.push(alone_num);
                 }else{
                 top->calc_rpn.push(num1+num2);
                 }
             }
-            else if(top->postfix.top()=="-"){
+            else if(top->operator_stack.top()=="-"){
                 if(alone_num!=0){
                     top->calc_rpn.push(alone_num*-1);
                 }else{
                 top->calc_rpn.push(num1-num2);
                 }
             }
-            else if(top->postfix.top()=="*"){
+            else if(top->operator_stack.top()=="*"){
                 top->calc_rpn.push(num1*num2);
             }
-            else if(top->postfix.top()=="/"){
+            else if(top->operator_stack.top()=="/"){
                 top->calc_rpn.push(num1/num2);
             }
-            else if(top->postfix.top()=="^"){
+            else if(top->operator_stack.top()=="^"){
                 top->calc_rpn.push(pow(num1,num2));
             }
-            top->postfix.pop();
+            top->operator_stack.pop();
           }
     }
-    while(!top->postfix.empty());
+    while(!top->operator_stack.empty());
     cout << "La respuesta es: " <<top->calc_rpn.top() << endl;
     delete top;
 }
@@ -185,7 +185,7 @@ template<class T> void Stack<T> ::topostfix(string operation){
     }
     stack_to_output(false);
     do{
-        top->postfix.push(top->output_queue.top());
+        top->operator_stack.push(top->output_queue.top());
         top->output_queue.pop();
     }
     while(!top->output_queue.empty());
