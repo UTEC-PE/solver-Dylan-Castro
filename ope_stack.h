@@ -1,13 +1,11 @@
-#ifndef NODE_H
-#define NODE_H
+#ifndef OPE_STACK_H
+#define OPE_STACK_H
 #include <stack>
 #include <string>
 using namespace std;
 template <typename T>
-struct Node {
+struct Ope_stack {
     stack<string> operator_stack;
-    stack<string> output_queue;
-    stack<double> calc_rpn;
 };
 
 #endif
