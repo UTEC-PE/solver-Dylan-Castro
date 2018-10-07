@@ -15,6 +15,11 @@ void menu() {
     homework->topostfix(operation);
 }
 
+// Tienes problemas con el doble paréntesis, por ejemplo:
+// ((5+3))
+// ((1-2)+b) b=5
+// ((1-2)+5)
+
 int main(int argc, char const *argv[]) {
     menu();
     cout << "\nPress enter to continue ...";
